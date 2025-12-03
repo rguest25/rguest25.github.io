@@ -55,6 +55,35 @@ p {
   font-style: normal;
   font-variation-settings: "wdth" 100;
 }
+ 
+  /* Div scrollable vertical */
+
+body {
+  /* 1. Base Property: Ensures vertical scrolling is possible 
+     when content exceeds the viewport height. 
+  */
+  overflow-y: scroll; 
+  
+  /* 2. Primary Sourced Property (Firefox): 
+     Sets the scrollbar thickness to 'none' (effectively hiding it) 
+     while preserving the ability to scroll.
+     (Source: MDN Web Docs - scrollbar-width)
+  */
+  scrollbar-width: none;     
+  
+  /* 3. Legacy Support (IE/Old Edge): 
+     A vendor prefix to hide the scrollbar in older Microsoft browsers.
+  */
+  -ms-overflow-style: none; 
+}
+
+/* 4. WebKit Browsers (Chrome, Safari, Opera, New Edge):
+   Uses the non-standard pseudo-element to target and hide the scrollbar.
+   This is essential for the hidden-scrollbar effect in most modern browsers.
+*/
+body::-webkit-scrollbar {
+  display: none;
+}
 
 /* Style the navigation menu */
 .topnav {
@@ -97,3 +126,49 @@ p {
   background-color: #04aa6d;
   color: white;
 }
+
+@media screen and (max-width: 600px) {
+
+/*Background Gradient*/
+body {
+  background: #3f5efb;
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+#header ul {
+  list-style: none;
+
+  margin: 10px;
+
+  padding: 0;
+}
+
+#header ul li a {
+  background-color: #ffffff;
+
+  border: 1px solid #999999;
+
+  color: #222222;
+
+  display: block;
+
+  font-size: 17px;
+
+  font-weight: bold;
+
+  margin-bottom: -1px;
+
+  padding: 12px 10px;
+
+  text-decoration: none;
+}
+
+
+
+}
+ /* Source Firefox and Gemini used to help refine structure.*/
+
