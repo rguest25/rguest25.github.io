@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARTERY | Venues</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ===================== NAVIGATION ===================== -->
+    <nav class="topnav">
+      <a
+        href="index.html"
+        style="font-weight: bold; font-size: 1.2rem; letter-spacing: 4px"
+        >ARTERY</a
+      >
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="discover.html">Discover</a>
+        <a href="venue.html" class="active">Venues</a>
+        <a href="logs.html">Logs</a>
+      </div>
+    </nav>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <main class="container">
+      <header class="hero-header">
+        <h1>VENUE SPOTLIGHT</h1>
+        <p>EXPLORE LONDON'S MOST ICONIC ART INSTITUTIONS.</p>
+      </header>
+
+      <!-- ===================== VENUE SLIDER ===================== -->
+      <div class="slider-wrapper">
+        <button
+          class="slide-arrow"
+          id="venue-arrow-prev"
+          aria-label="Previous Venue"
+        >
+          ‹
+        </button>
+        <button
+          class="slide-arrow"
+          id="venue-arrow-next"
+          aria-label="Next Venue"
+        >
+          ›
+        </button>
+
+        <section class="venue-gallery" id="venue-container">
+          <!-- ===================== VENUE 1 ===================== -->
+          <div class="venue-slide">
+            <div class="venue-info">
+              <h2>V&A South Kensington</h2>
+              <p>
+                The Victoria and Albert Museum is the world's leading museum of
+                art and design. Visit the stunning jewelry gallery to see
+                centuries of craftsmanship.
+              </p>
+              <p><strong>Location:</strong> Cromwell Road, SW7 2RL</p>
+              <p><strong>Entry:</strong> Free (Exhibitions vary)</p>
+              <a href="https://www.vam.ac.uk" target="_blank" class="venue-link"
+                >OFFICIAL WEBSITE →</a
+              >
+            </div>
+            <div class="venue-video">
+              <iframe
+                src="https://www.youtube.com/embed/KK59F59HYl0"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- ===================== VENUE 2 ===================== -->
+          <div class="venue-slide">
+            <div class="venue-info">
+              <h2>The National Gallery</h2>
+              <p>
+                Home to one of the greatest collections of paintings in the
+                world, located in the heart of Trafalgar Square.
+              </p>
+              <p>
+                <strong>Location:</strong> Trafalgar Square, London WC2N 5DN
+              </p>
+              <p><strong>Entry:</strong> Free</p>
+              <a
+                href="https://nationalgallery.org.uk"
+                target="_blank"
+                class="venue-link"
+                >OFFICIAL WEBSITE →</a
+              >
+            </div>
+            <div class="venue-video">
+              <iframe
+                src="https://www.youtube.com/embed/Ck5PuU0HB8k"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- ===================== VENUE 3 ===================== -->
+          <div class="venue-slide">
+            <div class="venue-info">
+              <h2>The Design Museum</h2>
+              <p>
+                Devoted to contemporary design in every form, from architecture
+                and fashion to graphics and product design.
+              </p>
+              <p>
+                <strong>Location:</strong> 224-238 Kensington High St, W8 6AG
+              </p>
+              <p><strong>Entry:</strong> Ticketed</p>
+              <a
+                href="https://designmuseum.org"
+                target="_blank"
+                class="venue-link"
+                >OFFICIAL WEBSITE →</a
+              >
+            </div>
+            <div class="venue-video">
+              <iframe
+                src="https://www.youtube.com/embed/X1XwYjnOb7w"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- ===================== VENUE 4 ===================== -->
+          <div class="venue-slide">
+            <div class="venue-info">
+              <h2>Fashion and Textile Museum</h2>
+              <p>
+                A cutting-edge center for contemporary fashion, textiles, and
+                jewelry in London, founded by Zandra Rhodes.
+              </p>
+              <p><strong>Location:</strong> 83 Bermondsey St, London SE1 3XF</p>
+              <p><strong>Entry:</strong> Ticketed</p>
+              <a
+                href="https://fashiontextilemuseum.org/"
+                target="_blank"
+                class="venue-link"
+                >OFFICIAL WEBSITE →</a
+              >
+            </div>
+            <div class="venue-video">
+              <iframe
+                src="https://www.youtube.com/embed/u_88j9B2qEQ"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- ===================== VENUE 5 ===================== -->
+          <div class="venue-slide">
+            <div class="venue-info">
+              <h2>Young V&A</h2>
+              <p>
+                A museum designed with and for children, young people, and
+                families to spark imagination and creativity.
+              </p>
+              <p><strong>Location:</strong> Bethnal Green, London E2 9PA</p>
+              <p><strong>Entry:</strong> Free</p>
+              <a
+                href="https://www.vam.ac.uk/young"
+                target="_blank"
+                class="venue-link"
+                >OFFICIAL WEBSITE →</a
+              >
+            </div>
+            <div class="venue-video">
+              <iframe
+                src="https://www.youtube.com/embed/D3C9U6d_Ra0"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+      <p>© 2026 ARTERY by Rachel Guest</p>
+    </footer>
+
+    <!-- ===================== VENUE SLIDER JS ===================== -->
+    <script>
+      const vContainer = document.getElementById("venue-container");
+      const vNextButton = document.getElementById("venue-arrow-next");
+      const vPrevButton = document.getElementById("venue-arrow-prev");
+
+      vNextButton.addEventListener("click", () => {
+        const slideWidth = vContainer.querySelector(".venue-slide").offsetWidth;
+        vContainer.scrollLeft += slideWidth + 60; // add gap
+      });
+
+      vPrevButton.addEventListener("click", () => {
+        const slideWidth = vContainer.querySelector(".venue-slide").offsetWidth;
+        vContainer.scrollLeft -= slideWidth + 60;
+      });
+    </script>
+  </body>
+</html>

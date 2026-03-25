@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARTERY | Logs</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="topnav">
+      <a href="index.html">ARTERY</a>
+      <a href="logs.html" class="active">Logs</a>
+      <a href="discover.html">Discover</a>
+      <a href="venue.html">Venues</a>
+    </nav>
+
+    <main class="container">
+      <header style="text-align: center; padding: 40px 0">
+        <h1
+          style="
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-weight: 300;
+          "
+        >
+          Community Logs
+        </h1>
+        <p>Share and explore real experiences from London's art scene.</p>
+      </header>
+
+      <section class="add-log-section">
+        <h2
+          style="
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+          "
+        >
+          Log Your Visit
+        </h2>
+        <form class="log-form">
+          <input
+            type="text"
+            placeholder="Your Handle (e.g. @ArtLover)"
+            required
+          />
+          <input type="text" placeholder="Venue / Location" required />
+          <textarea
+            rows="3"
+            placeholder="Share your reflections and experience..."
+            required
+          ></textarea>
+          <button type="submit">Post Log</button>
+        </form>
+      </section>
+
+      <section class="logs-grid">
+        <article class="log-card">
+          <img
+            src="assets/gingerartist.jpg"
+            class="profile-pic"
+            alt="Portrait of GalleryExplorer"
+          />
+          <h3
+            style="
+              border-bottom: 1px solid var(--accent-gray);
+              padding-bottom: 10px;
+            "
+          >
+            @GalleryExplorer
+          </h3>
+          <p class="log-location">Saatchi Gallery</p>
+          <p>
+            Loved the emerging artists exhibition! 🎨 ARTERY helped me discover
+            this space I wouldn’t normally visit. ✨
+          </p>
+          <p class="log-date">Visited: Jan 2026</p>
+        </article>
+
+        <article class="log-card">
+          <img
+            src="assets/fashion.jpg"
+            class="profile-pic"
+            alt="Portrait of FashionStudent"
+          />
+          <h3
+            style="
+              border-bottom: 1px solid var(--accent-gray);
+              padding-bottom: 10px;
+            "
+          >
+            @FashionStudent
+          </h3>
+          <p class="log-location">Tate Modern</p>
+          <p>
+            Explored the contemporary collections today. 🏛️ The scale of the
+            installations was inspiring and gave me ideas for my coursework! ✍️
+          </p>
+          <p class="log-date">Visited: Feb 2026</p>
+        </article>
+
+        <article class="log-card">
+          <img
+            src="assets/photographer.jpg"
+            class="profile-pic"
+            alt="Portrait of SketchLife"
+          />
+          <h3
+            style="
+              border-bottom: 1px solid var(--accent-gray);
+              padding-bottom: 10px;
+            "
+          >
+            @SketchLife
+          </h3>
+          <p class="log-location">National Gallery</p>
+          <p>
+            Spent the afternoon sketching. 📓 The Logs feature is perfect for
+            keeping track of my visits and reflections. 🖼️
+          </p>
+          <p class="log-date">Visited: Dec 2025</p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 ARTERY by Rachel Guest</p>
+    </footer>
+  </body>
+</html>
