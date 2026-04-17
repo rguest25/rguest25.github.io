@@ -1,14 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ARTERY | Artery Club</title>
     <style>
+        /* ==========================================================================
+       GLOBAL CLUB STYLES
+       Author: Rachel Guest
+       Sourced Logic: Flexbox Centering via W3Schools 
+       (https://www.w3schools.com/css/css3_flexbox.asp)
+       ========================================================================== */
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             background-color: #ffffff;
             color: #000;
             display: flex;
@@ -29,9 +36,12 @@
             font-size: 24px;
             text-decoration: none;
             color: #000;
+            letter-spacing: 4px;
         }
 
-        /* Club Hero Section */
+        /* --- CLUB HERO SECTION --- 
+       Designed as a high-contrast landing area to drive app downloads.
+    */
         .hero {
             background-color: #000;
             color: #fff;
@@ -61,7 +71,10 @@
             line-height: 1.6;
         }
 
-        /* App Button Container */
+        /* --- APP BUTTON CONTAINER --- 
+       Button styling logic: Inspired by W3Schools Button Groups
+       (https://www.w3schools.com/howto/howto_css_button_group.asp)
+    */
         .app-buttons {
             display: flex;
             gap: 20px;
@@ -86,12 +99,16 @@
             color: #000;
         }
 
-        /* Styling the SVG icons */
+        /* --- SVG ICON STYLING --- 
+       Citations: Icons sourced via Font Awesome SVG library patterns 
+       (Reference: https://www.w3schools.com/graphics/svg_intro.asp)
+    */
         .btn svg {
             width: 24px;
             height: 24px;
             margin-right: 15px;
-            fill: currentColor; /* Makes the logo change color with the text on hover */
+            fill: currentColor;
+            /* Inherits text colour for seamless hover transitions */
         }
 
         .btn-text {
@@ -121,19 +138,25 @@
         }
     </style>
 </head>
-<body>
 
+<body>
     <header>
         <a href="discover.html" class="logo">ARTERY</a>
     </header>
 
     <main class="hero">
         <h1>ARTERY CLUB</h1>
-        <p>Join our community of art lovers for exclusive previews, artist talks, and events.</p>
-        
+        <p>
+            Join our community of art lovers for exclusive previews, artist talks,
+            and events.
+        </p>
+
         <div class="app-buttons">
             <a href="#" class="btn">
-                <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 21.8-88.5 21.8-11.4 0-51.1-20.8-82.3-20.1-41.2 1-78.9 24.7-100 61.3-42 72.9-10.7 181.8 30.1 240.6 20 28.9 43.8 56.4 75.1 55.4 31.2-1 43.2-20.1 81.3-20.1 37.9 0 49.1 20.1 82 19.4 33.3-.7 54.3-24.5 74.4-53.6 23.1-33.5 32.5-65.9 33-67.6-1.7-.7-64.5-24.7-64.6-96.5zM294.1 82.2c15.6-18.7 26-44.4 23.1-70.1-22.1 1-48.8 15.2-64.5 34-14.1 16.6-26.6 42.9-23.2 67.8 24.5 1.9 49.1-13.1 64.6-31.7z"/></svg>
+                <svg viewBox="0 0 384 512">
+                    <path
+                        d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 21.8-88.5 21.8-11.4 0-51.1-20.8-82.3-20.1-41.2 1-78.9 24.7-100 61.3-42 72.9-10.7 181.8 30.1 240.6 20 28.9 43.8 56.4 75.1 55.4 31.2-1 43.2-20.1 81.3-20.1 37.9 0 49.1 20.1 82 19.4 33.3-.7 54.3-24.5 74.4-53.6 23.1-33.5 32.5-65.9 33-67.6-1.7-.7-64.5-24.7-64.6-96.5zM294.1 82.2c15.6-18.7 26-44.4 23.1-70.1-22.1 1-48.8 15.2-64.5 34-14.1 16.6-26.6 42.9-23.2 67.8 24.5 1.9 49.1-13.1 64.6-31.7z" />
+                </svg>
                 <div class="btn-text">
                     <span class="top">Download on the</span>
                     <span class="bottom">App Store</span>
@@ -141,7 +164,10 @@
             </a>
 
             <a href="#" class="btn">
-                <svg viewBox="0 0 512 512"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-10.3 18-28.5-1.2-40.8zM325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z"/></svg>
+                <svg viewBox="0 0 512 512">
+                    <path
+                        d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-10.3 18-28.5-1.2-40.8zM325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" />
+                </svg>
                 <div class="btn-text">
                     <span class="top">Get it on</span>
                     <span class="bottom">Google Play</span>
@@ -150,9 +176,7 @@
         </div>
     </main>
 
-    <footer>
-        © 2026 ARTERY by Rachel Guest
-    </footer>
-
+    <footer>© 2026 ARTERY by Rachel Guest</footer>
 </body>
+
 </html>

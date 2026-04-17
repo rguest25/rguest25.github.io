@@ -1,132 +1,671 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ARTERY | Logs</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <nav class="topnav">
-      <a href="index.html">ARTERY</a>
-      <a href="logs.html" class="active">Logs</a>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARTERY | Logs & Reviews</title>
+  <style>
+    /* ==========================================================================
+       CSS STYLING - Consolidated and formatted for readability
+       Author: Rachel Guest
+       Sourced Logic: Responsive Flexbox/Grid systems inspired by W3Schools 
+       (https://www.w3schools.com/css/css_rwd_intro.asp)
+       ========================================================================== */
+
+    :root {
+      --artery-black: #1a1a1a;
+      --neutral-bg: #f8f8f8;
+      --border-color: #e0e0e0;
+      --nav-bg: #ffffff;
+    }
+
+    body {
+      background-color: #fff;
+      margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: var(--artery-black);
+      overflow-x: hidden;
+    }
+
+    /* --- NAVIGATION --- 
+       Logic sourced from: https://www.w3schools.com/howto/howto_js_topnav.asp
+       Implemented as a sticky flex container for site-wide accessibility.
+    */
+    .topnav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--nav-bg);
+      padding: 10px 5%;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .topnav a {
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      padding: 10px 15px;
+      color: #000;
+    }
+
+    .topnav a.active {
+      font-weight: bold;
+    }
+
+    /* --- HERO HEADER --- 
+       Designed for typographic hierarchy and clear brand identity.
+    */
+    .hero-header {
+      text-align: center;
+      padding: 120px 0 80px;
+    }
+
+    .hero-header h1 {
+      font-weight: 300;
+      letter-spacing: 12px;
+      font-size: 48px;
+      margin: 0 0 30px 0;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .hero-header p {
+      text-transform: uppercase;
+      color: #888;
+      letter-spacing: 4px;
+      font-size: 13px;
+      margin: 0;
+    }
+
+    /* --- COMMUNITY LOGS AUTO-SLIDER --- 
+       Horizontal scroll logic: https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp
+       Used to display user reviews in a non-intrusive, interactive carousel.
+    */
+    .logs-slider-wrapper {
+      position: relative;
+      max-width: 100%;
+      margin: 0 auto 60px;
+      overflow: hidden;
+    }
+
+    .logs-slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      gap: 0;
+      scrollbar-width: none;
+      padding: 20px 0;
+    }
+
+    .logs-slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .log-card {
+      text-align: center;
+      padding: 20px;
+      flex: 0 0 33.333%;
+      scroll-snap-align: center;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 900px) {
+      .log-card {
+        flex: 0 0 50%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .log-card {
+        flex: 0 0 100%;
+      }
+    }
+
+    .profile-pic {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      filter: grayscale(10%);
+      border: 1px solid #eee;
+    }
+
+    .username {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #a1a1a1;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .real-name {
+      font-weight: bold;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .venue-name {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+
+    /* --- FORM STYLE --- */
+    .log-form-container {
+      max-width: 600px;
+      margin: 0 auto 100px;
+      padding: 60px 20px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .log-form input,
+    .log-form textarea {
+      width: 100%;
+      padding: 18px;
+      margin-bottom: 15px;
+      border: 1px solid var(--border-color);
+      box-sizing: border-box;
+      font-size: 11px;
+      letter-spacing: 2px;
+      background: #fafafa;
+      text-transform: uppercase;
+    }
+
+    .log-form button {
+      width: 100%;
+      padding: 20px;
+      background: #000;
+      color: #fff;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* --- PRESS SECTION --- 
+       Grid system sourced from: https://www.w3schools.com/css/css_grid.asp
+    */
+    .press-section {
+      background-color: var(--neutral-bg);
+      padding: 100px 20px;
+      border-top: 1px solid var(--border-color);
+      margin-bottom: 100px;
+    }
+
+    .press-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 60px;
+    }
+
+    .press-card {
+      text-align: center;
+    }
+
+    .press-quote {
+      font-family: Georgia, serif;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* --- ARTERY GALLERY --- 
+       Layout logic for sidebar-main gallery: https://www.w3schools.com/howto/howto_js_vertical_tabs.asp
+    */
+    .gallery-wrapper {
+      display: flex;
+      align-items: stretch;
+      max-width: 1200px;
+      margin: 0 auto 100px;
+      background: #fff;
+      border: 1px solid #f0f0f0;
+      overflow: hidden;
+    }
+
+    .gallery-sidebar {
+      width: 350px;
+      padding: 30px 20px;
+      border-right: 1px solid #f0f0f0;
+      box-sizing: border-box;
+      background: #fafafa;
+      flex-shrink: 0;
+    }
+
+    .gallery-sidebar-title {
+      font-size: 10px;
+      color: #a1a1a1;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    .album-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .album-item:hover,
+    .album-item.active {
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .album-item img {
+      width: 85px;
+      height: 85px;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+
+    .album-title {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .album-author {
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    .gallery-main {
+      flex-grow: 1;
+      position: relative;
+      background: #000;
+      min-height: 500px;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .main-gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .gallery-main:hover .main-gallery-img {
+      transform: scale(1.05);
+    }
+
+    .author-overlay {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      background: #fff;
+      padding: 10px 15px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      z-index: 10;
+    }
+
+    .author-overlay img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.5rem;
+      z-index: 10;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .gallery-main:hover .nav-arrow {
+      opacity: 1;
+    }
+
+    .nav-arrow:hover {
+      background: #fff;
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .left-arrow {
+      left: 20px;
+    }
+
+    .right-arrow {
+      right: 20px;
+    }
+
+    @media (max-width: 850px) {
+      .gallery-wrapper {
+        flex-direction: column;
+      }
+
+      .gallery-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+      }
+
+      .gallery-main {
+        height: 450px;
+      }
+
+      .nav-arrow {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="topnav">
+    <a href="index.html" style="font-weight: bold; font-size: 1.2rem; letter-spacing: 4px">ARTERY</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
       <a href="discover.html">Discover</a>
       <a href="venue.html">Venues</a>
-    </nav>
+      <a href="logs.html" class="active">Logs</a>
+    </div>
+  </nav>
 
-    <main class="container">
-      <header style="text-align: center; padding: 40px 0">
-        <h1
-          style="
-            letter-spacing: 6px;
-            text-transform: uppercase;
+  <main>
+    <header class="hero-header">
+      <h1>Community Logs</h1>
+      <p>A digital archive of curated perspectives.</p>
+    </header>
+
+    <section class="logs-slider-wrapper">
+      <div class="logs-slider" id="logs-slider-container">
+        <article class="log-card">
+          <img src="assets/gingerartist.jpg" class="profile-pic" alt="Sarah Profile" />
+          <span class="username">@GalleryExplorer</span>
+          <span class="real-name">Sarah L.</span>
+          <p class="venue-name">Saatchi Gallery</p>
+          <p style="font-size: 0.85rem; color: #555; padding: 0 10px">
+            Loved the emerging artists exhibition! ARTERY helped me discover
+            this space.
+          </p>
+        </article>
+
+        <article class="log-card">
+          <img src="assets/fashion.jpg" class="profile-pic" alt="Maya Profile" />
+          <span class="username">@FASHIONSTUDENT</span>
+          <span class="real-name">Maya J.</span>
+          <p class="venue-name">V&A Museum</p>
+          <p style="font-size: 0.85rem; color: #555; padding: 0 10px">
+            The textiles exhibit blew my mind! Endless inspiration here.
+          </p>
+        </article>
+
+        <article class="log-card">
+          <img src="assets/photographer.jpg" class="profile-pic" alt="Leo Profile" />
+          <span class="username">@ArtCurator</span>
+          <span class="real-name">Leo M.</span>
+          <p class="venue-name">British Museum</p>
+          <p style="font-size: 0.85rem; color: #555; padding: 0 10px">
+            An incredible journey through time. Highly recommend the guided
+            tours.
+          </p>
+        </article>
+
+        <article class="log-card">
+          <img src="assets/person.jpg" class="profile-pic" alt="Lottie Profile" />
+          <span class="username">@DesignNerd</span>
+          <span class="real-name">Lottie S.</span>
+          <p class="venue-name">Tate Modern</p>
+          <p style="font-size: 0.85rem; color: #555; padding: 0 10px">
+            The scale of the installations was inspiring for my coursework!
+          </p>
+        </article>
+
+        <article class="log-card">
+          <img src="assets/people.jpg" class="profile-pic" alt="Elena Profile" />
+          <span class="username">@SketchLife</span>
+          <span class="real-name">Elena R.</span>
+          <p class="venue-name">National Gallery</p>
+          <p style="font-size: 0.85rem; color: #555; padding: 0 10px">
+            Spent the afternoon sketching. Perfect for keeping track of my
+            reflections.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="log-form-container">
+      <h2 style="
+            text-align: center;
             font-weight: 300;
-          "
-        >
-          Community Logs
-        </h1>
-        <p>Share and explore real experiences from London's art scene.</p>
-      </header>
-
-      <section class="add-log-section">
-        <h2
-          style="
-            font-weight: 300;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-          "
-        >
-          Log Your Visit
-        </h2>
-        <form class="log-form">
-          <input
-            type="text"
-            placeholder="Your Handle (e.g. @ArtLover)"
-            required
-          />
-          <input type="text" placeholder="Venue / Location" required />
-          <textarea
-            rows="3"
-            placeholder="Share your reflections and experience..."
-            required
-          ></textarea>
-          <button type="submit">Post Log</button>
-        </form>
-      </section>
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+          ">
+        Add your log
+      </h2>
+      <form class="log-form">
+        <input type="text" placeholder="HANDLE" />
+        <input type="text" placeholder="VENUE" />
+        <textarea rows="4" placeholder="REFLECTIONS"></textarea>
+        <button type="submit">Post to Artery</button>
+      </form>
+    </section>
 
-      <section class="logs-grid">
-        <article class="log-card">
-          <img
-            src="assets/gingerartist.jpg"
-            class="profile-pic"
-            alt="Portrait of GalleryExplorer"
-          />
-          <h3
-            style="
-              border-bottom: 1px solid var(--accent-gray);
-              padding-bottom: 10px;
-            "
-          >
-            @GalleryExplorer
-          </h3>
-          <p class="log-location">Saatchi Gallery</p>
-          <p>
-            Loved the emerging artists exhibition! 🎨 ARTERY helped me discover
-            this space I wouldn’t normally visit. ✨
+    <section class="press-section">
+      <div class="press-container">
+        <div class="press-card">
+          <span style="display: block; margin-bottom: 15px">★★★★★</span>
+          <p class="press-quote">
+            “An essential artery for the London art scene.”
           </p>
-          <p class="log-date">Visited: Jan 2026</p>
-        </article>
-
-        <article class="log-card">
-          <img
-            src="assets/fashion.jpg"
-            class="profile-pic"
-            alt="Portrait of FashionStudent"
-          />
-          <h3
-            style="
-              border-bottom: 1px solid var(--accent-gray);
-              padding-bottom: 10px;
-            "
-          >
-            @FashionStudent
-          </h3>
-          <p class="log-location">Tate Modern</p>
-          <p>
-            Explored the contemporary collections today. 🏛️ The scale of the
-            installations was inspiring and gave me ideas for my coursework! ✍️
+          <p style="
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                color: #888;
+              ">
+            — Artforum
           </p>
-          <p class="log-date">Visited: Feb 2026</p>
-        </article>
-
-        <article class="log-card">
-          <img
-            src="assets/photographer.jpg"
-            class="profile-pic"
-            alt="Portrait of SketchLife"
-          />
-          <h3
-            style="
-              border-bottom: 1px solid var(--accent-gray);
-              padding-bottom: 10px;
-            "
-          >
-            @SketchLife
-          </h3>
-          <p class="log-location">National Gallery</p>
-          <p>
-            Spent the afternoon sketching. 📓 The Logs feature is perfect for
-            keeping track of my visits and reflections. 🖼️
+        </div>
+        <div class="press-card">
+          <span style="display: block; margin-bottom: 15px">★★★★★</span>
+          <p class="press-quote">
+            “The most sophisticated digital aide for the discerning visitor.”
           </p>
-          <p class="log-date">Visited: Dec 2025</p>
-        </article>
-      </section>
-    </main>
+          <p style="
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                color: #888;
+              ">
+            — The Art Newspaper
+          </p>
+        </div>
+        <div class="press-card">
+          <span style="display: block; margin-bottom: 15px">★★★★★</span>
+          <p class="press-quote">
+            “Quietly revolutionising how we document our artistic encounters.”
+          </p>
+          <p style="
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                color: #888;
+              ">
+            — Frieze
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <footer>
-      <p>© 2026 ARTERY by Rachel Guest</p>
-    </footer>
-  </body>
+    <section class="gallery-wrapper">
+      <aside class="gallery-sidebar" id="sidebar">
+        <div class="gallery-sidebar-title">ARTERY GALLERY</div>
+        <div class="album-item" onclick="updateGallery(0)">
+          <img src="assets/sitting.jpg" alt="Quiet Study Thumbnail" />
+          <div class="album-info">
+            <span class="album-title">Quiet Study</span><span class="album-author">Grace H.</span>
+          </div>
+        </div>
+        <div class="album-item active" onclick="updateGallery(1)">
+          <img src="assets/Statues.jpg" alt="Sculpture Hall Thumbnail" />
+          <div class="album-info">
+            <span class="album-title">Sculpture Hall</span><span class="album-author">Oliver W.</span>
+          </div>
+        </div>
+        <div class="album-item" onclick="updateGallery(2)">
+          <img src="assets/peoplegallary.jpg" alt="Saturday Crowds Thumbnail" />
+          <div class="album-info">
+            <span class="album-title">Saturday Crowds</span><span class="album-author">Debbie R.</span>
+          </div>
+        </div>
+      </aside>
+      <div class="gallery-main">
+        <img src="assets/Statues.jpg" alt="Gallery View" class="main-gallery-img" id="mainImg" />
+        <div class="author-overlay">
+          <img src="assets/Oliver.jpg" alt="Author Profile" id="authorPic" />
+          <div class="author-details">
+            <span class="author-name" id="authorName">Oliver W.</span>
+            <span class="author-stars" style="color: #2e8b57; font-size: 0.8rem">★★★★★</span>
+          </div>
+        </div>
+        <button class="nav-arrow left-arrow" onclick="prevImage()">
+          &#8249;
+        </button>
+        <button class="nav-arrow right-arrow" onclick="nextImage()">
+          &#8250;
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer style="text-align: center; padding: 60px; border-top: 1px solid #eee">
+    <p style="
+          font-size: 10px;
+          letter-spacing: 2px;
+          color: #a1a1a1;
+          text-transform: uppercase;
+        ">
+      © 2026 ARTERY by Rachel Guest
+    </p>
+  </footer>
+
+  <script>
+    /* ==========================================================================
+     JAVASCRIPT LOGIC
+     Purpose: Handles interactive gallery state and automatic carousel scrolling.
+     ========================================================================== */
+
+    const galleryData = [
+      {
+        img: "assets/sitting.jpg",
+        author: "Grace H.",
+        profile: "assets/Grace.jpg",
+      },
+      {
+        img: "assets/Statues.jpg",
+        author: "Oliver W.",
+        profile: "assets/Oliver.jpg",
+      },
+      {
+        img: "assets/peoplegallary.jpg",
+        author: "Debbie R.",
+        profile: "assets/Debbie.jpg",
+      },
+    ];
+    let currentIndex = 1;
+
+    /**
+     * updateGallery: Updates the main image and metadata based on selected index.
+     * Logic based on array indexing: https://www.w3schools.com/js/js_arrays.asp
+     */
+    function updateGallery(index) {
+      currentIndex = index;
+      const data = galleryData[currentIndex];
+      document.getElementById("mainImg").src = data.img;
+      document.getElementById("authorName").innerText = data.author;
+      document.getElementById("authorPic").src = data.profile;
+      const items = document.querySelectorAll(".album-item");
+      items.forEach((item, i) => {
+        i === index
+          ? item.classList.add("active")
+          : item.classList.remove("active");
+      });
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % galleryData.length;
+      updateGallery(currentIndex);
+    }
+
+    function prevImage() {
+      currentIndex =
+        (currentIndex - 1 + galleryData.length) % galleryData.length;
+      updateGallery(currentIndex);
+    }
+
+    /* --- AUTO SCROLL LOGIC --- 
+     Ensures the Community Logs slider provides dynamic content without user input.
+  */
+    const logsSlider = document.getElementById("logs-slider-container");
+
+    function getScrollAmount() {
+      const card = logsSlider.querySelector(".log-card");
+      return card ? card.offsetWidth : 0;
+    }
+
+    function autoScrollNext() {
+      const scrollAmount = getScrollAmount();
+      if (
+        logsSlider.scrollLeft + logsSlider.clientWidth >=
+        logsSlider.scrollWidth - 10
+      ) {
+        logsSlider.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        logsSlider.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      }
+    }
+
+    let scrollInterval = setInterval(autoScrollNext, 4000);
+
+    // Pause auto-scroll on hover for better UX
+    logsSlider.addEventListener("mouseenter", () =>
+      clearInterval(scrollInterval),
+    );
+    logsSlider.addEventListener(
+      "mouseleave",
+      () => (scrollInterval = setInterval(autoScrollNext, 4000)),
+    );
+  </script>
+</body>
+
 </html>

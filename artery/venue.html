@@ -1,207 +1,299 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ARTERY | Venues</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- ===================== NAVIGATION ===================== -->
-    <nav class="topnav">
-      <a
-        href="index.html"
-        style="font-weight: bold; font-size: 1.2rem; letter-spacing: 4px"
-        >ARTERY</a
-      >
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="discover.html">Discover</a>
-        <a href="venue.html" class="active">Venues</a>
-        <a href="logs.html">Logs</a>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARTERY | Venues</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ==========================================================================
+       VENUE-SPECIFIC STYLING
+       Author: Rachel Guest
+       Sourced Logic: Transition effects based on W3Schools CSS3 transitions 
+       (https://www.w3schools.com/css/css3_transitions.asp)
+       ========================================================================== */
+
+    .venue-spotlight img {
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Logic: Enhances interactivity by providing visual feedback on user hover */
+    .venue-spotlight:hover img {
+      transform: scale(1.05);
+    }
+
+    /* IMAGE HOVER REVIEW FEATURE 
+       Source concept: https://www.w3schools.com/howto/howto_css_image_overlay.asp
+       This implementation creates a sliding 'drawer' for academic peer reviews.
+    */
+    .review-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      overflow: hidden;
+      width: 100%;
+      height: 0;
+      transition: 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .spotlight-image-container:hover .review-overlay {
+      height: 30%;
+      /* Reveals the review on hover */
+    }
+
+    .review-text-content {
+      color: #1a1a1a;
+      font-size: 0.9rem;
+      padding: 0 20px;
+      text-align: center;
+      font-style: italic;
+    }
+
+    .membership-btn {
+      transition: all 0.3s ease;
+    }
+
+    .membership-btn:hover {
+      background: #1a1a1a;
+      color: #fff !important;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-family: sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #a1a1a1;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="topnav">
+    <a href="index.html" style="
+          font-weight: bold;
+          font-size: 1.2rem;
+          letter-spacing: 4px;
+          text-decoration: none;
+          color: inherit;
+        ">ARTERY</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="discover.html">Discover</a>
+      <a href="venue.html" class="active">Venues</a>
+      <a href="logs.html">Logs</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <header class="hero-header">
+      <h1>VENUE SPOTLIGHT</h1>
+      <p>EXPLORE LONDON'S MOST ICONIC ART INSTITUTIONS.</p>
+    </header>
+
+    <div class="slider-wrapper">
+      <button class="slide-arrow" id="venue-arrow-prev" aria-label="Previous Venue">
+        ‹
+      </button>
+      <button class="slide-arrow" id="venue-arrow-next" aria-label="Next Venue">
+        ›
+      </button>
+
+      <section class="venue-gallery" id="venue-container">
+        <div class="venue-slide">
+          <div class="venue-info">
+            <h2>V&A South Kensington</h2>
+            <p>
+              The Victoria and Albert Museum is the world's leading museum of
+              art and design.
+            </p>
+            <p><strong>Location:</strong> Cromwell Road, SW7 2RL</p>
+            <p><strong>Entry:</strong> Free (Exhibitions vary)</p>
+            <a href="https://www.vam.ac.uk" target="_blank" class="venue-link">OFFICIAL WEBSITE →</a>
+          </div>
+          <div class="venue-video">
+            <iframe src="https://www.youtube.com/embed/KK59F59HYl0" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="venue-slide">
+          <div class="venue-info">
+            <h2>The National Gallery</h2>
+            <p>
+              Home to one of the greatest collections of paintings in the
+              world.
+            </p>
+            <p>
+              <strong>Location:</strong> Trafalgar Square, London WC2N 5DN
+            </p>
+            <p><strong>Entry:</strong> Free</p>
+            <a href="https://nationalgallery.org.uk" target="_blank" class="venue-link">OFFICIAL WEBSITE →</a>
+          </div>
+          <div class="venue-video">
+            <iframe src="https://www.youtube.com/embed/Ck5PuU0HB8k" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="venue-slide">
+          <div class="venue-info">
+            <h2>The Design Museum</h2>
+            <p>
+              Devoted to contemporary design in every form, from architecture
+              to fashion.
+            </p>
+            <p>
+              <strong>Location:</strong> 224-238 Kensington High St, W8 6AG
+            </p>
+            <p><strong>Entry:</strong> Ticketed</p>
+            <a href="https://designmuseum.org" target="_blank" class="venue-link">OFFICIAL WEBSITE →</a>
+          </div>
+          <div class="venue-video">
+            <iframe src="https://www.youtube.com/embed/X1XwYjnOb7w" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="venue-spotlight" style="
+          border: 1px solid #e0e0e0;
+          margin: 80px auto;
+          background: #fff;
+          overflow: hidden;
+          max-width: 1100px;
+          border-radius: 8px;
+        ">
+      <div style="display: flex; flex-wrap: wrap; align-items: stretch">
+        <div class="spotlight-image-container" style="
+              flex: 1.5;
+              min-width: 350px;
+              overflow: hidden;
+              display: flex;
+              position: relative;
+            ">
+          <img src="assets/cafe artery.jpg" alt="Artery Cafe Workspace" style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+              " />
+
+          <div class="review-overlay">
+            <div class="review-text-content">
+              "The perfect atmospheric corner for post-gallery reflection and
+              journaling." — @ArtHistorian_LDN
+            </div>
+          </div>
+        </div>
+
+        <div style="
+              flex: 1;
+              min-width: 350px;
+              padding: 60px;
+              text-align: left;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            ">
+          <span style="
+                text-transform: uppercase;
+                letter-spacing: 4px;
+                font-size: 10px;
+                color: #a1a1a1;
+                font-weight: bold;
+              ">
+            South West London | Flagship
+          </span>
+
+          <h2 style="
+                font-weight: 300;
+                letter-spacing: 8px;
+                text-transform: uppercase;
+                margin: 20px 0;
+                font-size: 28px;
+                line-height: 1.2;
+              ">
+            The Artery <br />Social Hub
+          </h2>
+
+          <p style="
+                color: #444;
+                font-size: 0.95rem;
+                line-height: 1.8;
+                margin-bottom: 25px;
+              ">
+            Nestled within the prestigious cultural corridor of South West
+            London, our flagship cafe serves as a refined sanctuary for the
+            modern intellectual.
+          </p>
+
+          <div style="
+                border-left: 2px solid #1a1a1a;
+                padding-left: 20px;
+                font-size: 0.75rem;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: #1a1a1a;
+              ">
+            <p style="margin: 5px 0">
+              <strong>Precinct:</strong> 12 Exhibition Road, SW7
+            </p>
+            <p style="margin: 5px 0">
+              <strong>Connectivity:</strong> Complimentary Enterprise Wi-Fi
+            </p>
+          </div>
+
+          <div style="margin-top: 40px">
+            <a href="arteryclub.html" class="membership-btn" style="
+                  display: inline-block;
+                  padding: 14px 30px;
+                  border: 1px solid #1a1a1a;
+                  text-decoration: none;
+                  color: #1a1a1a;
+                  font-weight: bold;
+                  font-size: 10px;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                ">
+              Membership Access
+            </a>
+          </div>
+        </div>
       </div>
-    </nav>
+    </section>
+  </main>
 
-    <!-- ===================== MAIN CONTENT ===================== -->
-    <main class="container">
-      <header class="hero-header">
-        <h1>VENUE SPOTLIGHT</h1>
-        <p>EXPLORE LONDON'S MOST ICONIC ART INSTITUTIONS.</p>
-      </header>
+  <footer>
+    <p>© 2026 ARTERY by Rachel Guest</p>
+  </footer>
 
-      <!-- ===================== VENUE SLIDER ===================== -->
-      <div class="slider-wrapper">
-        <button
-          class="slide-arrow"
-          id="venue-arrow-prev"
-          aria-label="Previous Venue"
-        >
-          ‹
-        </button>
-        <button
-          class="slide-arrow"
-          id="venue-arrow-next"
-          aria-label="Next Venue"
-        >
-          ›
-        </button>
+  <script>
+    /* ==========================================================================
+     CAROUSEL LOGIC
+     Source concept: https://www.w3schools.com/howto/howto_js_slideshow.asp
+     Purpose: Handles the horizontal scrolling of the venue gallery section.
+     ========================================================================== */
+    const vContainer = document.getElementById("venue-container");
+    const vNextButton = document.getElementById("venue-arrow-next");
+    const vPrevButton = document.getElementById("venue-arrow-prev");
 
-        <section class="venue-gallery" id="venue-container">
-          <!-- ===================== VENUE 1 ===================== -->
-          <div class="venue-slide">
-            <div class="venue-info">
-              <h2>V&A South Kensington</h2>
-              <p>
-                The Victoria and Albert Museum is the world's leading museum of
-                art and design. Visit the stunning jewelry gallery to see
-                centuries of craftsmanship.
-              </p>
-              <p><strong>Location:</strong> Cromwell Road, SW7 2RL</p>
-              <p><strong>Entry:</strong> Free (Exhibitions vary)</p>
-              <a href="https://www.vam.ac.uk" target="_blank" class="venue-link"
-                >OFFICIAL WEBSITE →</a
-              >
-            </div>
-            <div class="venue-video">
-              <iframe
-                src="https://www.youtube.com/embed/KK59F59HYl0"
-                frameborder="0"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
+    vNextButton.addEventListener("click", () => {
+      const slide = vContainer.querySelector(".venue-slide");
+      if (slide) vContainer.scrollLeft += slide.offsetWidth + 60;
+    });
 
-          <!-- ===================== VENUE 2 ===================== -->
-          <div class="venue-slide">
-            <div class="venue-info">
-              <h2>The National Gallery</h2>
-              <p>
-                Home to one of the greatest collections of paintings in the
-                world, located in the heart of Trafalgar Square.
-              </p>
-              <p>
-                <strong>Location:</strong> Trafalgar Square, London WC2N 5DN
-              </p>
-              <p><strong>Entry:</strong> Free</p>
-              <a
-                href="https://nationalgallery.org.uk"
-                target="_blank"
-                class="venue-link"
-                >OFFICIAL WEBSITE →</a
-              >
-            </div>
-            <div class="venue-video">
-              <iframe
-                src="https://www.youtube.com/embed/Ck5PuU0HB8k"
-                frameborder="0"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
+    vPrevButton.addEventListener("click", () => {
+      const slide = vContainer.querySelector(".venue-slide");
+      if (slide) vContainer.scrollLeft -= slide.offsetWidth + 60;
+    });
+  </script>
+</body>
 
-          <!-- ===================== VENUE 3 ===================== -->
-          <div class="venue-slide">
-            <div class="venue-info">
-              <h2>The Design Museum</h2>
-              <p>
-                Devoted to contemporary design in every form, from architecture
-                and fashion to graphics and product design.
-              </p>
-              <p>
-                <strong>Location:</strong> 224-238 Kensington High St, W8 6AG
-              </p>
-              <p><strong>Entry:</strong> Ticketed</p>
-              <a
-                href="https://designmuseum.org"
-                target="_blank"
-                class="venue-link"
-                >OFFICIAL WEBSITE →</a
-              >
-            </div>
-            <div class="venue-video">
-              <iframe
-                src="https://www.youtube.com/embed/X1XwYjnOb7w"
-                frameborder="0"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-
-          <!-- ===================== VENUE 4 ===================== -->
-          <div class="venue-slide">
-            <div class="venue-info">
-              <h2>Fashion and Textile Museum</h2>
-              <p>
-                A cutting-edge center for contemporary fashion, textiles, and
-                jewelry in London, founded by Zandra Rhodes.
-              </p>
-              <p><strong>Location:</strong> 83 Bermondsey St, London SE1 3XF</p>
-              <p><strong>Entry:</strong> Ticketed</p>
-              <a
-                href="https://fashiontextilemuseum.org/"
-                target="_blank"
-                class="venue-link"
-                >OFFICIAL WEBSITE →</a
-              >
-            </div>
-            <div class="venue-video">
-              <iframe
-                src="https://www.youtube.com/embed/u_88j9B2qEQ"
-                frameborder="0"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-
-          <!-- ===================== VENUE 5 ===================== -->
-          <div class="venue-slide">
-            <div class="venue-info">
-              <h2>Young V&A</h2>
-              <p>
-                A museum designed with and for children, young people, and
-                families to spark imagination and creativity.
-              </p>
-              <p><strong>Location:</strong> Bethnal Green, London E2 9PA</p>
-              <p><strong>Entry:</strong> Free</p>
-              <a
-                href="https://www.vam.ac.uk/young"
-                target="_blank"
-                class="venue-link"
-                >OFFICIAL WEBSITE →</a
-              >
-            </div>
-            <div class="venue-video">
-              <iframe
-                src="https://www.youtube.com/embed/D3C9U6d_Ra0"
-                frameborder="0"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-        </section>
-      </div>
-    </main>
-
-    <!-- ===================== FOOTER ===================== -->
-    <footer>
-      <p>© 2026 ARTERY by Rachel Guest</p>
-    </footer>
-
-    <!-- ===================== VENUE SLIDER JS ===================== -->
-    <script>
-      const vContainer = document.getElementById("venue-container");
-      const vNextButton = document.getElementById("venue-arrow-next");
-      const vPrevButton = document.getElementById("venue-arrow-prev");
-
-      vNextButton.addEventListener("click", () => {
-        const slideWidth = vContainer.querySelector(".venue-slide").offsetWidth;
-        vContainer.scrollLeft += slideWidth + 60; // add gap
-      });
-
-      vPrevButton.addEventListener("click", () => {
-        const slideWidth = vContainer.querySelector(".venue-slide").offsetWidth;
-        vContainer.scrollLeft -= slideWidth + 60;
-      });
-    </script>
-  </body>
 </html>

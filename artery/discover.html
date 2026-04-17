@@ -1,265 +1,487 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ARTERY | Discover</title>
-    <link rel="stylesheet" href="styles.css" />
 
-    <style>
-      /* --- Professional Artery Club Styling --- */
-      .artery-club-section {
-        background-color: #000;
-        padding: 100px 20px;
-        text-align: center;
-        border-top: 1px solid #1a1a1a;
-        color: #ffffff;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARTERY | Discover</title>
+
+  <!--
+  CSS REFERENCES:
+  - W3Schools CSS Guide: https://www.w3schools.com/css/
+  - MDN Web Docs: https://developer.mozilla.org/
+  -->
+
+  <style>
+    /* =====================================================
+    GLOBAL STYLES & RESET
+    ===================================================== */
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --main-bg: #fdfdfd;
+      --text-color: #1a1a1a;
+      --accent-gray: #e0e0e0;
+      --nav-bg: #ffffff;
+    }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: var(--main-bg);
+      color: var(--text-color);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* =====================
+    NAVIGATION
+    ===================== */
+    .topnav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--nav-bg);
+      padding: 10px 5%;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .topnav a {
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      padding: 10px 15px;
+      color: var(--text-color);
+      transition: 0.3s;
+    }
+
+    .topnav a.active {
+      font-weight: bold;
+    }
+
+    /* =====================
+    HERO HEADER
+    ===================== */
+    .hero-header {
+      text-align: center;
+      padding: 80px 0 40px 0;
+    }
+
+    .hero-header h1 {
+      font-weight: 300;
+      letter-spacing: 12px;
+      font-size: 48px;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .hero-header p {
+      text-transform: uppercase;
+      color: #888;
+      letter-spacing: 3px;
+      font-size: 14px;
+    }
+
+    /* =====================
+    DIRECTIONS FINDER
+    ===================== */
+    .directions-finder {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #f9f9f9;
+      margin-bottom: 50px;
+      border-top: 1px solid var(--accent-gray);
+      border-bottom: 1px solid var(--accent-gray);
+    }
+
+    .directions-finder h3 {
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: var(--text-color);
+    }
+
+    .directions-finder p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .directions-form {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .directions-form input,
+    .directions-form select,
+    .directions-form button {
+      padding: 12px;
+      border: 1px solid var(--accent-gray);
+      font-family: inherit;
+    }
+
+    .directions-form button {
+      background: #1a1a1a;
+      color: white;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* =====================
+    EXHIBITION SLIDER
+    ===================== */
+    .slider-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .exhibition-gallery {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 20px;
+      scrollbar-width: none;
+      padding-bottom: 10px;
+      align-items: stretch;
+    }
+
+    .exhibition-gallery::-webkit-scrollbar {
+      display: none;
+    }
+
+    .exhibition-link {
+      flex: 0 0 calc(33.33% - 14px);
+      min-width: 300px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+    }
+
+    .exhibition-card {
+      border: 1px solid var(--accent-gray);
+      background: #fff;
+      transition: transform 0.3s ease;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .exhibition-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .exhibition-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-content p {
+      margin: 0 0 10px 0;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    .cta-text {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: #666;
+    }
+
+    .slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--accent-gray);
+      font-size: 2rem;
+      padding: 5px 15px;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 4px;
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    .slider-wrapper:hover .slide-arrow {
+      opacity: 1;
+    }
+
+    #slide-arrow-prev {
+      left: -10px;
+    }
+
+    #slide-arrow-next {
+      right: -10px;
+    }
+
+    /* =====================
+    ARTERY CLUB SECTION
+    ===================== */
+    .artery-club-section {
+      background: #fff;
+      color: #1a1a1a;
+      text-align: center;
+      padding: 60px 20px;
+      margin: 60px auto;
+      width: 100%;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+    }
+
+    .artery-club-section h2 {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      background: linear-gradient(to left,
+          #ff3d00,
+          #ffea00,
+          #00e676,
+          #2979ff,
+          #d500f9,
+          #ff3d00);
+      background-size: 200% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow-flow 5s linear infinite;
+      display: inline-block;
+    }
+
+    @keyframes rainbow-flow {
+      0% {
+        background-position: 0% 50%;
       }
 
-      .artery-club-section h2 {
-        font-size: 2.2rem;
-        font-weight: 300;
-        letter-spacing: 6px;
-        text-transform: uppercase;
-        margin-bottom: 20px;
+      50% {
+        background-position: 100% 50%;
       }
 
-      .artery-club-section p {
-        font-size: 1rem;
-        color: #888;
-        margin-bottom: 40px;
-        letter-spacing: 1px;
-        line-height: 1.6;
+      100% {
+        background-position: 0% 50%;
       }
+    }
 
-      .artery-btn {
-        display: inline-block;
-        padding: 16px 50px;
-        border: 1px solid #ffffff;
-        color: #ffffff;
-        text-decoration: none;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-      }
+    .artery-btn {
+      display: inline-block;
+      background: transparent;
+      color: #1a1a1a;
+      border: 2px solid #1a1a1a;
+      padding: 15px 40px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: 0.3s;
+    }
 
-      .artery-btn:hover {
-        background-color: #ffffff;
-        color: #000000;
-      }
-    </style>
-  </head>
+    .artery-btn:hover {
+      background-color: #1a1a1a;
+      color: #ffffff;
+    }
 
-  <body>
-    <nav class="topnav">
-      <a
-        href="index.html"
-        style="font-weight: bold; font-size: 1.2rem; letter-spacing: 4px"
-        >ARTERY</a
-      >
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="discover.html" class="active">Discover</a>
-        <a href="venue.html">Venues</a>
-        <a href="logs.html">Logs</a>
-      </div>
-    </nav>
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #888;
+      font-size: 0.8rem;
+      border-top: 1px solid #eee;
+    }
 
-    <main class="container">
-      <header class="hero-header">
-        <h1>DISCOVER</h1>
-        <p>EXPLORE CURRENT EXHIBITIONS ACROSS LONDON'S PREMIER INSTITUTIONS.</p>
-      </header>
+    .card-content p {
+      margin: 0 0 10px 0 !important;
+      font-size: 11px !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      display: block !important;
+      letter-spacing: 0px !important;
+      text-transform: uppercase !important;
+    }
+  </style>
+</head>
 
-      <section class="directions-finder">
-        <h3>PLAN YOUR ART ROUTE</h3>
-        <p>
-          ENTER YOUR STARTING POINT TO GET DIRECTIONS TO LONDON'S TOP GALLERIES.
-        </p>
+<body>
+  <nav class="topnav">
+    <a href="index.html" style="font-weight: bold; font-size: 1.2rem; letter-spacing: 4px">ARTERY</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="discover.html" class="active">Discover</a>
+      <a href="venue.html">Venues</a>
+      <a href="logs.html">Logs</a>
+    </div>
+  </nav>
 
-        <form
-          action="https://www.google.com/maps/dir/"
-          method="get"
-          target="_blank"
-          class="directions-form"
-        >
-          <input
-            type="text"
-            name="saddr"
-            placeholder="Type your location (e.g. Camden)..."
-            required
-          />
+  <main class="container">
+    <header class="hero-header">
+      <h1>DISCOVER</h1>
+      <p>Explore current exhibitions across london's premier institutions.</p>
+    </header>
 
-          <select name="daddr">
-            <option value="British Museum, London">BRITISH MUSEUM</option>
-            <option value="Tate Modern, London">TATE MODERN</option>
-            <option value="Royal Academy of Arts, London">ROYAL ACADEMY</option>
-          </select>
+    <section class="directions-finder">
+      <!-- Google Maps reference -->
+      <!-- Source: https://www.google.com/maps/dir/ -->
 
-          <button type="submit">GET DIRECTIONS</button>
-        </form>
+      <h3>Plan your ARTERY route</h3>
+      <p>Enter your current location to generate a personalised route.</p>
+
+      <form action="https://www.google.com/maps/dir/" method="get" target="_blank" class="directions-form">
+        <input type="text" name="saddr" placeholder="Type your location (e.g. Camden)..." required />
+
+        <select name="daddr">
+          <option value="British Museum, London">BRITISH MUSEUM</option>
+          <option value="Tate Modern, London">TATE MODERN</option>
+          <option value="Royal Academy of Arts, London">ROYAL ACADEMY</option>
+          <option value="The Photographers' Gallery, London">
+            THE PHOTOGRAPHERS' GALLERY
+          </option>
+          <option value="Garden Museum, London">GARDEN MUSEUM</option>
+        </select>
+
+        <button type="submit">GET DIRECTIONS</button>
+      </form>
+    </section>
+
+    <div class="slider-wrapper">
+      <button class="slide-arrow" id="slide-arrow-prev">‹</button>
+      <button class="slide-arrow" id="slide-arrow-next">›</button>
+
+      <section class="exhibition-gallery" id="exhibition-container">
+        <!-- Image source: Unsplash License -->
+        <a href="https://www.gardenmuseum.org.uk/whats-on/seeds-of-exchange/" target="_blank" class="exhibition-link">
+          <article class="exhibition-card">
+            <img src="assets/botanical.jpg" class="exhibition-img" alt="Botanical Art" />
+            <div class="card-content">
+              <p><strong>SEEDS OF EXCHANGE</strong> | GARDEN MUSEUM</p>
+              <span class="cta-text">BOOK ON OFFICIAL SITE →</span>
+            </div>
+          </article>
+        </a>
+
+        <!-- Image source: Unsplash License -->
+        <a href="https://thephotographersgallery.org.uk/" target="_blank" class="exhibition-link">
+          <article class="exhibition-card">
+            <img src="assets/gallery.jpg" class="exhibition-img" alt="Black and White Gallery" />
+            <div class="card-content">
+              <p><strong>MARTIN PARR</strong> | PHOTOGRAPHERS' GALLERY</p>
+              <span class="cta-text">BOOK ON OFFICIAL SITE →</span>
+            </div>
+          </article>
+        </a>
+
+        <!-- Image source: Unsplash License -->
+        <a href="https://www.britishmuseum.org/exhibitions/samurai" target="_blank" class="exhibition-link">
+          <article class="exhibition-card">
+            <img src="assets/samurai.jpg" class="exhibition-img" alt="Samurai" />
+            <div class="card-content">
+              <p><strong>SAMURAI</strong> | BRITISH MUSEUM</p>
+              <span class="cta-text">BOOK ON OFFICIAL SITE →</span>
+            </div>
+          </article>
+        </a>
+
+        <!-- Image source: Unsplash License -->
+        <a href="https://www.tate.org.uk/whats-on/tate-modern/tracey-emin" target="_blank" class="exhibition-link">
+          <article class="exhibition-card">
+            <img src="assets/abstract.jpg" class="exhibition-img" alt="Tracey Emin" />
+            <div class="card-content">
+              <p><strong>TRACEY EMIN</strong> | TATE MODERN</p>
+              <span class="cta-text">BOOK ON OFFICIAL SITE →</span>
+            </div>
+          </article>
+        </a>
+
+        <!-- Image source: Unsplash License -->
+        <a href="https://www.royalacademy.org.uk/exhibition/rose-wylie" target="_blank" class="exhibition-link">
+          <article class="exhibition-card">
+            <img src="assets/artist.jpg" class="exhibition-img" alt="Rose Wylie" />
+            <div class="card-content">
+              <p><strong>ROSE WYLIE</strong> | ROYAL ACADEMY</p>
+              <span class="cta-text">BOOK ON OFFICIAL SITE →</span>
+            </div>
+          </article>
+        </a>
       </section>
+    </div>
 
-      <div class="slider-wrapper">
-        <button
-          class="slide-arrow"
-          id="slide-arrow-prev"
-          aria-label="Previous Exhibit"
-        >
-          ‹
-        </button>
-        <button
-          class="slide-arrow"
-          id="slide-arrow-next"
-          aria-label="Next Exhibit"
-        >
-          ›
-        </button>
+    <section class="artery-club-section">
+      <h2>Artery Club</h2>
+      <p>
+        Join our community of art lovers for exclusive previews and events.
+      </p>
+      <a href="arteryclub.html" class="artery-btn">Join Our Club</a>
+    </section>
+  </main>
 
-        <section class="exhibition-gallery" id="exhibition-container">
-          <!-- Exhibition Cards -->
-          <a
-            href="https://www.britishmuseum.org/exhibitions/samurai"
-            target="_blank"
-            class="exhibition-link"
-          >
-            <article class="exhibition-card">
-              <img
-                src="https://images.unsplash.com/photo-1599423300746-b62533397364?q=80&w=1000&auto=format&fit=crop"
-                class="exhibition-img"
-                alt="Samurai"
-              />
-              <div class="card-content">
-                <p><strong>SAMURAI</strong> | BRITISH MUSEUM</p>
-                <span class="cta-text">BOOK ON OFFICIAL SITE →</span>
-              </div>
-            </article>
-          </a>
+  <!--
+  JAVASCRIPT REFERENCES:
+  - W3Schools JS DOM: https://www.w3schools.com/js/
+  - MDN scrollLeft: https://developer.mozilla.org/
+  -->
 
-          <a
-            href="https://www.tate.org.uk/whats-on/tate-modern/tracey-emin"
-            target="_blank"
-            class="exhibition-link"
-          >
-            <article class="exhibition-card">
-              <img
-                src="https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=1000&auto=format&fit=crop"
-                class="exhibition-img"
-                alt="Tracey Emin"
-              />
-              <div class="card-content">
-                <p><strong>TRACEY EMIN</strong> | TATE MODERN</p>
-                <span class="cta-text">BOOK ON OFFICIAL SITE →</span>
-              </div>
-            </article>
-          </a>
+  <script>
+    const container = document.getElementById("exhibition-container");
+    const nextButton = document.getElementById("slide-arrow-next");
+    const prevButton = document.getElementById("slide-arrow-prev");
 
-          <a
-            href="https://www.royalacademy.org.uk/exhibition/rose-wylie"
-            target="_blank"
-            class="exhibition-link"
-          >
-            <article class="exhibition-card">
-              <img
-                src="https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=1000"
-                class="exhibition-img"
-                alt="Rose Wylie"
-              />
-              <div class="card-content">
-                <p><strong>ROSE WYLIE</strong> | ROYAL ACADEMY</p>
-                <span class="cta-text">BOOK ON OFFICIAL SITE →</span>
-              </div>
-            </article>
-          </a>
+    nextButton.addEventListener("click", () => {
+      const cardWidth =
+        container.querySelector(".exhibition-link").offsetWidth + 20;
+      container.scrollLeft += cardWidth;
+    });
 
-          <a
-            href="https://thephotographersgallery.org.uk/"
-            target="_blank"
-            class="exhibition-link"
-          >
-            <article class="exhibition-card">
-              <img
-                src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?q=80&w=1000&auto=format&fit=crop"
-                class="exhibition-img"
-                alt="Photography"
-              />
-              <div class="card-content">
-                <p><strong>MARTIN PARR</strong> | PHOTOGRAPHERS' GALLERY</p>
-                <span class="cta-text">BOOK ON OFFICIAL SITE →</span>
-              </div>
-            </article>
-          </a>
+    prevButton.addEventListener("click", () => {
+      const cardWidth =
+        container.querySelector(".exhibition-link").offsetWidth + 20;
+      container.scrollLeft -= cardWidth;
+    });
+  </script>
 
-          <a
-            href="https://www.gardenmuseum.org.uk/whats-on/seeds-of-exchange/"
-            target="_blank"
-            class="exhibition-link"
-          >
-            <article class="exhibition-card">
-              <img
-                src="https://images.unsplash.com/photo-1550684376-efcbd6e3f031?auto=format&fit=crop&q=80&w=1000"
-                class="exhibition-img"
-                alt="Seeds of Exchange Botanical Art"
-              />
-              <div class="card-content">
-                <p><strong>SEEDS OF EXCHANGE</strong> | GARDEN MUSEUM</p>
-                <span class="cta-text">BOOK ON OFFICIAL SITE →</span>
-              </div>
-            </article>
-          </a>
+  <footer>
+    <p>© 2026 ARTERY by Rachel Guest</p>
+  </footer>
 
-          <a
-            href="http://barbican.org.uk/whats-on/art-design"
-            target="_blank"
-            class="exhibition-link"
-          >
-            <article class="exhibition-card">
-              <img
-                src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=1000&auto=format&fit=crop"
-                class="exhibition-img"
-                alt="Sculpture"
-              />
-              <div class="card-content">
-                <p><strong>LYNDA BENGLIS</strong> | BARBICAN ART GALLERY</p>
-                <span class="cta-text">BOOK ON OFFICIAL SITE →</span>
-              </div>
-            </article>
-          </a>
-        </section>
-      </div>
+  <!--
+  FULL REFERENCES:
 
-      <!-- Single Artery Club Section -->
-      <section class="artery-club-section">
-        <h2>Artery Club</h2>
-        <p>
-          Join our community of art lovers for exclusive previews and events.
-        </p>
-        <a href="arteryclub.html" class="artery-btn">Join Our Club</a>
-      </section>
-    </main>
+  Unsplash (2026). Free Image Library.
+  https://unsplash.com/
 
-    <script>
-      const container = document.getElementById("exhibition-container");
-      const nextButton = document.getElementById("slide-arrow-next");
-      const prevButton = document.getElementById("slide-arrow-prev");
+  W3Schools (2026). HTML, CSS, JavaScript Tutorials.
+  https://www.w3schools.com/
 
-      nextButton.addEventListener("click", () => {
-        const cardWidth =
-          container.querySelector(".exhibition-link").offsetWidth + 30;
-        container.scrollLeft += cardWidth;
-      });
+  MDN Web Docs (2026). Web Development Documentation.
+  https://developer.mozilla.org/
 
-      prevButton.addEventListener("click", () => {
-        const cardWidth =
-          container.querySelector(".exhibition-link").offsetWidth + 30;
-        container.scrollLeft -= cardWidth;
-      });
-    </script>
+  Google Maps Platform (2026). Directions API.
+  https://developers.google.com/maps
+  -->
+</body>
 
-    <footer>
-      <p>© 2026 ARTERY by Rachel Guest</p>
-    </footer>
-  </body>
 </html>

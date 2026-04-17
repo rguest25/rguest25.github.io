@@ -4,260 +4,300 @@ GLOBAL RESET
 
 * {
   box-sizing: border-box;
-  }
+}
 
 /* =====================================================
 ROOT VARIABLES
 ===================================================== */
 :root {
---main-bg: #fdfdfd;
---text-color: #1a1a1a;
---accent-gray: #e0e0e0;
---nav-bg: #ffffff;
---button-green: #2ecc71;
+  --main-bg: #fdfdfd;
+  --text-color: #1a1a1a;
+  --accent-gray: #e0e0e0;
+  --nav-bg: #ffffff;
+  --button-green: #2ecc71;
 }
 
 /* =====================================================
 GLOBAL STYLES
 ===================================================== */
 body {
-font-family: "Helvetica Neue", Arial, sans-serif;
-background-color: var(--main-bg);
-color: var(--text-color);
-margin: 0;
-line-height: 1.6;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--main-bg);
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.6;
 }
 
 .container {
-max-width: 1100px;
-margin: auto;
-padding: 20px;
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
 }
 
 /* =====================
 NAVIGATION
 ===================== */
 .topnav {
-display: flex;
-justify-content: space-between;
-align-items: center;
-background-color: var(--nav-bg);
-padding: 10px 5%;
-border-bottom: 1px solid #eee;
-position: sticky;
-top: 0;
-z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--nav-bg);
+  padding: 10px 5%;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .topnav a {
-text-decoration: none;
-text-transform: uppercase;
-letter-spacing: 2px;
-font-size: 13px;
-padding: 10px 15px;
-color: var(--text-color);
-transition: 0.3s;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  padding: 10px 15px;
+  color: var(--text-color);
+  transition: 0.3s;
 }
 
 .topnav a.active {
-font-weight: bold;
+  font-weight: bold;
 }
 
 /* =====================
 HOME PAGE & HERO
 ===================== */
 .hero-header {
-text-align: center;
-padding: 80px 0 40px 0;
+  text-align: center;
+  padding: 80px 0 40px 0;
 }
 
 .hero-header h1 {
-font-weight: 300;
-letter-spacing: 12px;
-font-size: 48px;
-margin-bottom: 5px;
-text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 12px;
+  font-size: 48px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
 }
 
 .hero-header p {
-text-transform: uppercase;
-color: #888;
-letter-spacing: 3px;
-font-size: 14px;
+  text-transform: uppercase;
+  color: #888;
+  letter-spacing: 3px;
+  font-size: 14px;
 }
 
 .search-section {
-display: flex;
-justify-content: center;
-margin: 40px 0 80px 0;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 80px 0;
 }
 
 .search-section input {
-width: 60%;
-max-width: 500px;
-padding: 15px;
-border: 1px solid var(--accent-gray);
-outline: none;
+  width: 60%;
+  max-width: 500px;
+  padding: 15px;
+  border: 1px solid var(--accent-gray);
+  outline: none;
 }
 
 .search-section button {
-background: var(--text-color);
-color: white;
-padding: 15px 30px;
-border: none;
-cursor: pointer;
-letter-spacing: 1px;
+  background: var(--text-color);
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1px;
 }
 
 .reflections-container {
-display: flex;
-justify-content: center;
-gap: 60px;
-flex-wrap: wrap;
-margin: 40px 0 80px 0;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin: 40px 0 80px 0;
 }
 
 .reflection-item {
-display: flex;
-align-items: center;
-gap: 20px;
-max-width: 400px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 400px;
 }
 
 .reflection-item img {
-width: 120px;
-height: 120px;
-border-radius: 50%;
-object-fit: cover;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 /* =====================
 COMMUNITY LOGS
 ===================== */
 .logs-grid {
-display: flex;
-flex-wrap: wrap;
-gap: 30px;
-justify-content: center;
-margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .log-card {
-flex: 1;
-min-width: 300px;
-max-width: 350px;
-background: white;
-padding: 25px;
-border: 1px solid var(--accent-gray);
-border-radius: 4px;
-transition: 0.3s;
-text-align: center;
+  flex: 1;
+  min-width: 300px;
+  max-width: 350px;
+  background: white;
+  padding: 25px;
+  border: 1px solid var(--accent-gray);
+  border-radius: 4px;
+  transition: 0.3s;
+  text-align: center;
 }
 
 .log-card:hover {
-box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transform: translateY(-5px);
 }
 
 .profile-pic {
-width: 80px;
-height: 80px;
-border-radius: 50%;
-object-fit: cover;
-display: block;
-margin: 0 auto 15px auto;
-border: 1px solid var(--accent-gray);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 15px auto;
+  border: 1px solid var(--accent-gray);
 }
 
 .add-log-section {
-background-color: #f9f9f9;
-padding: 30px;
-margin-bottom: 50px;
-border: 1px solid var(--accent-gray);
-border-radius: 4px;
-text-align: center;
+  background-color: #f9f9f9;
+  padding: 30px;
+  margin-bottom: 50px;
+  border: 1px solid var(--accent-gray);
+  border-radius: 4px;
+  text-align: center;
 }
 
 .log-form {
-display: flex;
-flex-direction: column;
-max-width: 500px;
-margin: 0 auto;
-gap: 15px;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+  gap: 15px;
 }
 
 .log-form input,
 .log-form textarea {
-padding: 12px 15px;
-border: 1px solid #ccc;
-font-family: inherit;
-font-size: 0.9rem;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: 0.9rem;
 }
 
 .log-form button {
-background: black;
-color: white;
-border: none;
-padding: 15px;
-cursor: pointer;
-text-transform: uppercase;
-letter-spacing: 2px;
-transition: 0.3s;
+  background: black;
+  color: white;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.3s;
 }
 
 .log-form button:hover {
-background: #333;
+  background: #333;
 }
 
 /* =========================================
 DISCOVER PAGE & SLIDER
 ========================================= */
 .slider-wrapper {
-position: relative;
-width: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .exhibition-gallery {
-display: flex;
-overflow-x: auto;
-scroll-behavior: smooth;
-gap: 20px;
-scrollbar-width: none;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  scrollbar-width: none;
 }
 
 .exhibition-gallery::-webkit-scrollbar {
-display: none;
+  display: none;
 }
 
+/* FLEX FIX APPLIED HERE */
 .exhibition-link {
-flex: 0 0 calc(33.33% - 14px);
-text-decoration: none;
-color: inherit;
+  flex: 0 0 calc(33.33% - 14px);
+  min-width: 300px;
+  text-decoration: none;
+  color: inherit;
+  display: flex; 
 }
 
-.slide-arrow {
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
-background: rgba(255, 255, 255, 0.95);
-border: 1px solid var(--accent-gray);
-font-size: 2rem;
-padding: 10px 15px;
-cursor: pointer;
-z-index: 1000;
-opacity: 0;
-transition: 0.3s;
-border-radius: 4px;
-}
-
-.slider-wrapper:hover .slide-arrow {
-opacity: 1;
+.exhibition-card {
+  border: 1px solid var(--accent-gray);
+  background: #fff;
+  transition: transform 0.3s ease;
+  width: 100%; 
+  display: flex; 
+  flex-direction: column; 
 }
 
 .exhibition-img {
-width: 100%;
-height: 280px;
-object-fit: cover;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.card-content p {
+  margin: 0 0 10px 0 !important;
+  font-size: 11px !important;
+  letter-spacing: 0.2px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  display: block !important;
+  text-transform: uppercase;
+}
+
+.cta-text {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #666;
+}
+/* END OF FLEX FIX */
+
+.slide-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--accent-gray);
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 1000;
+  opacity: 0;
+  transition: 0.3s;
+  border-radius: 4px;
+}
+
+.slider-wrapper:hover .slide-arrow {
+  opacity: 1;
 }
 
 #slide-arrow-prev { left: 0; }
@@ -270,44 +310,42 @@ object-fit: cover;
 DIRECTIONS FINDER
 ========================================= */
 .directions-finder {
-text-align: center;
-padding: 40px 20px;
-background-color: #f9f9f9;
-margin-bottom: 50px;
-border-top: 1px solid var(--accent-gray);
-border-bottom: 1px solid var(--accent-gray);
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  margin-bottom: 50px;
+  border-top: 1px solid var(--accent-gray);
+  border-bottom: 1px solid var(--accent-gray);
 }
 
 .directions-form {
-display: flex;
-justify-content: center;
-gap: 15px;
-flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 /* =========================================
 RAINBOW ANIMATION
 ========================================= */
 @keyframes rainbow-flow {
-0% { background-position: 0% 50%; }
-50% { background-position: 100% 50%; }
-100% { background-position: 0% 50%; }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 .artery-club-section h2 {
-    font-size: 2rem;
-    font-weight: 300;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-
-    /* Swapped the horrid blue for a rainbow flowing in the opposite direction (to left) */
-    background: linear-gradient(to left, #ff3d00, #ffea00, #00e676, #2979ff, #d500f9, #ff3d00);
-    background-size: 200% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: rainbow-flow 5s linear infinite;
-    display: inline-block;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  background: linear-gradient(to left, #ff3d00, #ffea00, #00e676, #2979ff, #d500f9, #ff3d00);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow-flow 5s linear infinite;
+  display: inline-block;
 }
 
 .artery-btn:hover { background:#fff; color:#000; }
@@ -316,44 +354,43 @@ RAINBOW ANIMATION
 ARTHOUSE FUNDS SPONSOR
 ========================================= */
 .arthouse-sponsor {
-background:#fff;
-color:#1a1a1a;
-text-align:center;
-padding:60px 20px;
-margin:0 auto 80px auto;
-width:100%;
-border:1px solid var(--accent-gray);
-box-shadow:0 10px 30px rgba(0,0,0,0.05);
-border-radius:4px;
+  background:#fff;
+  color:#1a1a1a;
+  text-align:center;
+  padding:60px 20px;
+  margin:0 auto 80px auto;
+  width:100%;
+  border:1px solid var(--accent-gray);
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+  border-radius:4px;
 }
 
 .arthouse-sponsor h2 {
-font-weight:300;
-letter-spacing:4px;
-text-transform:uppercase;
-margin-bottom:15px;
-font-size:1.8rem;
-
-background: linear-gradient(to right,#ff3d00,#ffea00,#00e676,#2979ff,#d500f9,#ff3d00);
-background-size:200% auto;
-background-clip:text;
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-animation: rainbow-flow 4s linear infinite;
-display:inline-block;
+  font-weight:300;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-bottom:15px;
+  font-size:1.8rem;
+  background: linear-gradient(to right,#ff3d00,#ffea00,#00e676,#2979ff,#d500f9,#ff3d00);
+  background-size:200% auto;
+  background-clip:text;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation: rainbow-flow 4s linear infinite;
+  display:inline-block;
 }
 
 .donate-btn {
-display:inline-block;
-background:transparent;
-color:#1a1a1a;
-border:2px solid #1a1a1a;
-padding:15px 40px;
-text-decoration:none;
-text-transform:uppercase;
-letter-spacing:2px;
-font-weight:bold;
-transition:0.3s;
+  display:inline-block;
+  background:transparent;
+  color:#1a1a1a;
+  border:2px solid #1a1a1a;
+  padding:15px 40px;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:bold;
+  transition:0.3s;
 }
 
 .donate-btn:hover { background:#1a1a1a; color:#fff; }
@@ -363,52 +400,52 @@ VENUE PAGE SLIDER
 ===================== */
 
 .venue-gallery{
-display:flex;
-overflow-x:auto;
-scroll-behavior:smooth;
-scroll-snap-type:x mandatory;
-gap:0;
-scrollbar-width:none;
+  display:flex;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  scroll-snap-type:x mandatory;
+  gap:0;
+  scrollbar-width:none;
 }
 
 .venue-gallery::-webkit-scrollbar{
-display:none;
+  display:none;
 }
 
 .venue-slide{
-flex:0 0 100%;
-display:flex;
-align-items:center;
-gap:60px;
-background:#f9f9f9;
-padding:60px;
-border-radius:16px;
-box-sizing:border-box;
-scroll-snap-align:start;
+  flex:0 0 100%;
+  display:flex;
+  align-items:center;
+  gap:60px;
+  background:#f9f9f9;
+  padding:60px;
+  border-radius:16px;
+  box-sizing:border-box;
+  scroll-snap-align:start;
 }
 
 .venue-info{
-flex:1;
+  flex:1;
 }
 
 .venue-video{
-flex:1.3;
+  flex:1.3;
 }
 
 .venue-video iframe{
-width:100%;
-aspect-ratio:16/9;
-border-radius:16px;
-border:none;
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:16px;
+  border:none;
 }
 
 /* =====================
 FOOTER
 ===================== */
 footer{
-text-align:center;
-padding:60px;
-font-size:14px;
-color:#888;
-border-top:1px solid #eee;
+  text-align:center;
+  padding:60px;
+  font-size:14px;
+  color:#888;
+  border-top:1px solid #eee;
 }

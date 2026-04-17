@@ -5,12 +5,86 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARTERY | Home</title>
+
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ==========================================================================
+       PAGE-SPECIFIC STYLES
+       ========================================================================== */
+
+    /* Hero Header Styling  */
+    .hero-header {
+      text-align: center;
+      padding: 100px 0 60px 0;
+    }
+
+    .hero-header h1 {
+      font-weight: 300;
+      letter-spacing: 16px;
+      font-size: 64px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      color: #1a1a1a;
+    }
+
+    .hero-header p {
+      text-transform: uppercase;
+      color: #888;
+      letter-spacing: 5px;
+      font-size: 18px;
+      margin: 0;
+    }
+
+    /* Cookie Banner Styling */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #1a1a1a;
+      color: #fff;
+      text-align: center;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      z-index: 9999;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+      box-sizing: border-box;
+      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .cookie-banner p {
+      margin: 0;
+    }
+
+    .cookie-banner button {
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 10px 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .cookie-banner button:hover {
+      background: #e0e0e0;
+    }
+  </style>
 </head>
 
 <body>
   <nav class="topnav">
     <a href="index.html" class="active">ARTERY</a>
+
     <div class="nav-links">
       <a href="logs.html">Logs</a>
       <a href="discover.html">Discover</a>
@@ -20,7 +94,7 @@
 
   <main class="container">
     <header class="hero-header">
-      <h1>ARTERY -test</h1>
+      <h1>ARTERY</h1>
       <p>London Art Experience</p>
     </header>
 
@@ -43,7 +117,7 @@
 
       <div class="reflections-container">
         <div class="reflection-item">
-          <img src="assets/reviewer-1.jpg" alt="Oleksandr" />
+          <img src="assets/reviewer-1.jpg" alt="Portrait of Oleksandr, curator" />
           <div>
             <p style="font-style: italic; color: #555">
               "From Kyiv to London, ARTERY is my essential gallery guide."
@@ -53,7 +127,7 @@
         </div>
 
         <div class="reflection-item">
-          <img src="assets/reviewer.jpg" alt="Charlotte" />
+          <img src="assets/reviewer.jpg" alt="Portrait of Charlotte, art historian" />
           <div>
             <p style="font-style: italic; color: #555">
               "ARTERY is a masterclass in gallery curation, simplifying
@@ -85,10 +159,12 @@
             ">
           Student Art Pass
         </h2>
+
         <p>
           Support your local galleries, save national treasures, and discover
           amazing exhibitions across the UK.
         </p>
+
         <p style="margin-top: 25px">
           <a href="https://www.artfund.org" target="_blank" style="
                 color: black;
@@ -105,7 +181,8 @@
 
       <div style="flex: 1; min-width: 300px">
         <iframe width="100%" height="250" src="https://www.youtube.com/embed/1qnzmHQ0pWI"
-          title="Art Fund Promotional Video" frameborder="0" allowfullscreen style="border-radius: 4px"></iframe>
+          title="Art Fund Promotional Video" frameborder="0" allowfullscreen style="border-radius: 4px">
+        </iframe>
       </div>
     </section>
 
@@ -116,13 +193,48 @@
         directly funds emerging artists, gallery spaces, and free community
         workshops.
       </p>
-      <a href="https://arthouseunlimited.org/products/donate" target="_blank" class="donate-btn">Make a Donation</a>
+      <a href="https://arthouseunlimited.org/products/donate" target="_blank" class="donate-btn">
+        Make a Donation
+      </a>
     </section>
   </main>
 
   <footer>
     <p>© 2026 ARTERY by Rachel Guest</p>
   </footer>
+
+  <div id="cookie-banner" class="cookie-banner">
+    <p>
+      We use cookies to enhance your experience. By continuing to visit this
+      site you agree to our use of cookies.
+    </p>
+    <button id="accept-cookies">Accept</button>
+  </div>
+
+  <script>
+    /**
+     * COOKIE CONSENT LOGIC
+     * Implementation: Rachel Guest
+     * Reference: https://www.w3schools.com/js/js_cookies.asp
+     * Technical Support / Google Gemini was consulted for explaining LocalStorage
+     * implementation and event listener best practices.
+     */
+    document.addEventListener("DOMContentLoaded", function () {
+      const banner = document.getElementById("cookie-banner");
+      const acceptBtn = document.getElementById("accept-cookies");
+
+      // Check for existing consent in LocalStorage
+      if (localStorage.getItem("arteryCookieConsent") === "accepted") {
+        banner.style.display = "none";
+      }
+
+      // Handle button click and set consent
+      acceptBtn.addEventListener("click", function () {
+        banner.style.display = "none";
+        localStorage.setItem("arteryCookieConsent", "accepted");
+      });
+    });
+  </script>
 </body>
 
 </html>
